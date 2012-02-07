@@ -12,7 +12,7 @@
 #= require_tree ./views
 
 window.addToHomeConfig = {
-  lifeSpan: 10000
+  lifespan: 10000
 }
 
 class App extends Spine.Controller
