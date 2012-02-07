@@ -12,6 +12,5 @@ Todo
 * Start using jQTouch navigation instead of only spine.
 * This includes the back navigation which is hard coded now.
 * Add iScroll.
-* Add add2home.
 * Add polling that keeps the views fresh when changes occur on the server side.
 * Look into how bundling the app into Phonegap would work.
