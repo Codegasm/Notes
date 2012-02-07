@@ -1,0 +1,13 @@
+<%= toolbar %>
+
+<form>
+  <ul class="rounded">
+    <li>
+      <input type="text" name="title" value="<%= note.title %>" required autofocus placeholder="Title" />
+    </li>
+    <li>
+      <textarea name="content" required placeholder="Content"><%= note.content %></textarea>
+    </li>
+  </ul>
+  <a href="#" class="greenButton" data-type="submit">Save</a>
+</form>
