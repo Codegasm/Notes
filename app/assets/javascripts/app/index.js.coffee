@@ -11,6 +11,10 @@
 #= require_tree ./controllers
 #= require_tree ./views
 
+window.addToHomeConfig = {
+  lifespan: 10000
+}
+
 class App extends Spine.Controller
   constructor: ->
     super
