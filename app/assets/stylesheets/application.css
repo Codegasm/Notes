@@ -7,3 +7,20 @@
  *= require_tree . 
 */
 
+#jqt > div > div.wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 45px;
+  bottom: 0px;
+  width: 100%;
+  padding: 0;
+
+}
+
+#jqt > div > div.wrapper > div.scroller {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  padding: 0;
+  margin-bottom: 15px;
+}
