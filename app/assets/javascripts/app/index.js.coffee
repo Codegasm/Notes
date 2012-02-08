@@ -24,11 +24,12 @@ class App extends Spine.Controller
     #  ...
     @append(@notes = new App.Notes)
 
-    Spine.Route.setup()
+    Spine.Route.setup(shim: true)
 
 window.App = App
 
 jQuery ($) ->
+<<<<<<< HEAD
   initialPage = '#notes'
   
   new App(el: $('body'))
@@ -41,3 +42,11 @@ jQuery ($) ->
   window.setTimeout ->
     window.jQT.goTo(initialPage, 'dissolve')
   , 1000
+=======
+  new App(el: $('body'))
+  window.jQT = new $.jQTouch({})
+  
+  window.setTimeout ->
+    window.jQT.goTo('#notes')
+  , 0
+>>>>>>> feature/jqtouch

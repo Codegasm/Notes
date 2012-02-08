@@ -1,9 +1,13 @@
 <ul class="rounded">
 <% for (i in notes) { var note = notes[i]; %>
-  <li>
-    <a href="#" data-type="show" data-id="<%= note.id %>"><%= note.title %></a>
+  <li class="arrow">
+    <a href="#note" data-type="show" data-id="<%= note.id %>"><%= note.title %></a>
   </li>
 <% } %>
 </ul>
 
+<<<<<<< HEAD
 <a href="#" data-type="new" class="greenButton">New Note</a>
+=======
+<a href="#new" data-type="new" class="greenButton">New Note</a>
+>>>>>>> feature/jqtouch

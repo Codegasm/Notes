@@ -6,7 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jqtouch-jquery.min
-//= require jqtouch.min
+//= require jqtouch-jquery
+//= require jqtouch
 //= require app
 //= require_tree .
