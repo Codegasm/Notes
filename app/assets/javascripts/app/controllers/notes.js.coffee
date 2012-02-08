@@ -21,7 +21,8 @@ class Index extends JqController
   render: =>
     notes = Note.all()
     toolbar = @view('notes/_toolbar')(pageTitle: 'Notes', noBack: true)
-    @html @view('notes/index')(notes: notes, toolbar: toolbar)
+    pageContent = @view('notes/index')(notes: notes)
+    @html @view('notes/_iscroll')(toolbar: toolbar, pageContent: pageContent)
     
   edit: (e) ->
     item = $(e.target).item()
@@ -58,7 +59,8 @@ class Show extends JqController
 
   render: ->
     toolbar = @view('notes/_toolbar')(pageTitle: @item.title)
-    @html @view('notes/show')(note: @item, toolbar: toolbar)
+    pageContent = @view('notes/show')(note: @item)
+    @html @view('notes/_iscroll')(toolbar: toolbar, pageContent: pageContent)
 
   edit: ->
     @navigate '/notes', @item.id, 'edit'
@@ -83,7 +85,8 @@ class New extends JqController
     
   render: ->
     toolbar = @view('notes/_toolbar')(pageTitle: 'New note')
-    @html @view('notes/new')(toolbar: toolbar)
+    pageContent = @view('notes/new')
+    @html @view('notes/_iscroll')(toolbar: toolbar, pageContent: pageContent)
 
   back: ->
     @navigate '/notes'
@@ -110,7 +113,8 @@ class Edit extends JqController
     
   render: ->
     toolbar = @view('notes/_toolbar')(pageTitle: 'Edit note')
-    @html @view('notes/edit')(note: @item, toolbar: toolbar)
+    pageContent = @view('notes/edit')(note: @item)
+    @html @view('notes/_iscroll')(toolbar: toolbar, pageContent: pageContent)
 
   back: ->
     @navigate '/notes'
