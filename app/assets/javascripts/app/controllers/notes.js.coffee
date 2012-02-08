@@ -6,9 +6,9 @@ $.fn.item = ->
   elementID or= $(@).parents('[data-id]').data('id')
   Note.find(elementID)
 
-class Index extends JqController  
-  className: 'current'
-  
+class Index extends JqController
+  pageId: 'notes'
+
   events:
     'click [data-type=show]':    'show'
     'click [data-type=new]':     'new'
@@ -40,12 +40,11 @@ class Index extends JqController
     
     
 class Show extends JqController
-  className: 'show'
+  pageId: 'note'
   
   events:
     'click [data-type=edit]': 'edit'
     'click [data-type=destroy]': 'destroy'
-    'click [data-type=back]': 'back'
 
   constructor: ->
     super
@@ -66,14 +65,13 @@ class Show extends JqController
   destroy: ->
     if confirm('Sure?')
       @navigate '/notes'
+      jQT.goTo('#notes', 'slideright')
       @item.destroy()
 
-  back: ->
-    @navigate '/notes'
-
 class New extends JqController
+  pageId: 'new'
+  
   events:
-    'click [data-type=back]': 'back'
     'click [data-type=submit]': 'jqsubmit'
     'submit form': 'submit'
     
@@ -85,17 +83,17 @@ class New extends JqController
     toolbar = @view('notes/_toolbar')(pageTitle: 'New note')
     @html @view('notes/new')(toolbar: toolbar)
 
-  back: ->
-    @navigate '/notes'
-
   submit: (e) ->
     e.preventDefault()
     note = Note.fromForm(e.target).save()
-    @navigate '/notes', note.id if note
+    if note
+      @navigate '/notes', note.id
+      jQT.goTo('#notes', 'slideright')
     
 class Edit extends JqController
+  pageId: 'edit'
+  
   events:
-    'click [data-type=back]': 'back'
     'click [data-type=submit]': 'jqsubmit'
     'submit form': 'submit'
   
@@ -112,13 +110,11 @@ class Edit extends JqController
     toolbar = @view('notes/_toolbar')(pageTitle: 'Edit note')
     @html @view('notes/edit')(note: @item, toolbar: toolbar)
 
-  back: ->
-    @navigate '/notes'
-
   submit: (e) ->
     e.preventDefault()
     @item.fromForm(e.target).save()
-    @navigate '/notes'
+    @navigate '/notes', @item.id
+    jQT.goTo('#note', 'slideright')
 
 
 class App.Notes extends Spine.Stack

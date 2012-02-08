@@ -24,9 +24,14 @@ class App extends Spine.Controller
     #  ...
     @append(@notes = new App.Notes)
 
-    Spine.Route.setup()
+    Spine.Route.setup(shim: true)
 
 window.App = App
 
 jQuery ($) ->
   new App(el: $('body'))
+  window.jQT = new $.jQTouch({})
+  
+  window.setTimeout ->
+    window.jQT.goTo('#notes')
+  , 0

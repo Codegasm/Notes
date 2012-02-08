@@ -1,10 +1,9 @@
 class JqController extends Spine.Controller
-  activate: ->
-    @el.addClass("current")
 
-  deactivate: ->
-    @el.removeClass("current")
-  
+  constructor: ->
+    super
+    @el.attr('id', this.pageId) if this.pageId
+
   jqsubmit: ->
     $(@el).find('form').submit()
 
