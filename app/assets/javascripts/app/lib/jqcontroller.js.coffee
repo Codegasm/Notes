@@ -3,10 +3,7 @@ class JqController extends Spine.Controller
   constructor: ->
     super
     @el.attr('id', this.pageId) if this.pageId
-<<<<<<< HEAD
     @el.live('pageAnimationEnd', this.animationEnd)
-=======
->>>>>>> feature/jqtouch
 
   jqsubmit: ->
     $(@el).find('form').submit()
