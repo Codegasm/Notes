@@ -83,7 +83,7 @@ class New extends JqController
     
   render: ->
     toolbar = @view('notes/_toolbar')(pageTitle: 'New note')
-    pageContent = @view('notes/new')
+    pageContent = @view('notes/new')()
     @html @view('notes/_iscroll')(toolbar: toolbar, pageContent: pageContent)
 
   submit: (e) ->
