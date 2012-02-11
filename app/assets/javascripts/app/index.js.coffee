@@ -11,6 +11,10 @@
 #= require_tree ./controllers
 #= require_tree ./views
 
+window.addToHomeConfig = {
+  lifespan: 10000
+}
+
 class App extends Spine.Controller
   constructor: ->
     super
@@ -20,9 +24,20 @@ class App extends Spine.Controller
     #  ...
     @append(@notes = new App.Notes)
 
-    Spine.Route.setup()
+    Spine.Route.setup(shim: true)
 
 window.App = App
 
 jQuery ($) ->
+  initialPage = '#notes'
+  
   new App(el: $('body'))
+  window.jQT = new $.jQTouch({})
+  
+  if window.location.hash
+#    initialPage = window.location.hash
+    window.location.hash = ''
+  
+  window.setTimeout ->
+    window.jQT.goTo(initialPage, 'dissolve')
+  , 1000

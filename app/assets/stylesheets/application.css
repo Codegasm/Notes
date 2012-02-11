@@ -2,11 +2,25 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require themes/css/apple
+ *= require themes/css/jqtouch
  *= require_self
  *= require_tree . 
 */
 
-.stack > *:not(.active) {
-  display: none;
+#jqt > div > div.wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 45px;
+  bottom: 0px;
+  width: 100%;
+  padding: 0;
+
+}
+
+#jqt > div > div.wrapper > div.scroller {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  padding: 0;
+  margin-bottom: 15px;
 }
